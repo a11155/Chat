@@ -1,5 +1,5 @@
 
-# Chat Project
+# Discordo
 
 A basic recreation of a Discord text messaging app as a training project to learn how to work with GUI and MVVM architecture 
 
