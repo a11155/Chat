@@ -1,0 +1,146 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Chat.Themes" xmlns:viewmodel="clr-namespace:Chat.MVVM.ViewModel">
+
+
+    <Style TargetType="ListViewItem" x:Key="ChatItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                            <Ellipse Width="30" Height="30"
+                                 Margin="10, 0,0,-5">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding Username}"
+                                   Foreground="{Binding UsernameColor}"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,-5,0"/>
+
+
+                                    <Label Content="{Binding Time}"
+                                   Foreground="#44474D"
+                                   FontWeight="SemiBold"
+                                   FontSize="8"
+                                   VerticalAlignment="Center"
+                                  />
+                                </StackPanel>
+                                <Label Content="{Binding Message}"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                  />
+                            </StackPanel>
+                            
+
+                        </StackPanel>
+                        
+                    </DockPanel>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+
+
+        <Style.Resources>
+            <ControlTemplate x:Key="SelectedMessage">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                        <Ellipse Width="30" Height="30"
+                                 Margin="10, 0,0,-5">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImageSource}"
+                                            RenderOptions.BitmapScalingMode="Fant"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Username}"
+                                   Foreground="{Binding UsernameColor}"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,-5,0"/>
+
+
+                                <Label Content="{Binding Time}"
+                                   Foreground="#44474D"
+                                   FontWeight="SemiBold"
+                                   FontSize="8"
+                                   VerticalAlignment="Center"
+                                  />
+                            </StackPanel>
+                            <Label Content="{Binding Message}"
+                                   Foreground="White"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                  />
+                        </StackPanel>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Visibility="Visible" Name="EditButtons">
+
+                        <Image Source="C:\Users\PC\source\repos\Chat\Chat\Icons\trash.png"
+                           Width="20" Height="20"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Margin="5,5,16,0">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick" Command="{Binding DeleteMessageCommand}" />
+                            </Image.InputBindings>
+                        </Image>
+
+
+                        <Image Source="C:\Users\PC\source\repos\Chat\Chat\Icons\edit.png"
+                           Width="20" Height="20"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Margin="5,5,16,0">
+                            <Image.InputBindings>
+                                <MouseBinding Gesture="LeftClick" Command="{Binding EditMessageCommand}" />
+                            </Image.InputBindings>
+                        </Image>
+
+
+                    </StackPanel>
+                </DockPanel>
+            </ControlTemplate>
+        </Style.Resources>
+
+
+        <Style.Triggers>
+            <!--
+            <Trigger Property="IsSelected" Value="True" >
+                <Setter Property="Template"  Value="{StaticResource SelectedMessage}" />
+            </Trigger>
+            -->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}"  Value="True" />
+                    <Condition Binding="{Binding CurrentUserIsSender}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Template"  Value="{StaticResource SelectedMessage}" />
+            </MultiDataTrigger>
+        </Style.Triggers>
+            
+    </Style>
+</ResourceDictionary>
+
+
+
+
+
+
+
+
+
+
+
+
+
