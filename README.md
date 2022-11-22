@@ -11,9 +11,9 @@ A basic recreation of a Discord text messaging app as a training project to lear
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](Screenshots/discordo2.png)
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](Screenshots/Discordo.png)
 
 
 ## Tech Stack
